@@ -10,13 +10,13 @@ pdf.set_auto_page_break(auto=False, margin=0)
 
 df = pd.read_csv("topics.csv", sep=',')
 
-# con este bucle for creamos de manera repetida las páginas pdf con sus celdas y encabezados.
+# con este bucle for creamos de manera repetida las páginas Principales pdf (donde pone el tema principal) con sus celdas y encabezados.
 for index, row in df.iterrows():  # se pone iterrow para que recorra todas las filas al completo del archivo .csv.
     pdf.add_page()                # es la llamada a la instancia FPDF para crear una página en formato pdf.
 
     # Creamos la cabecera, título de la página:
-    pdf.set_font(family="Times", style="B", size=24)        # se ajusta el fromato del texto de las celdas (recuadros),
-    pdf.set_text_color(254, 0, 0)                   # y el color.
+    pdf.set_font(family="Times", style="B", size=24)                             # se ajusta el fromato del texto de las celdas (recuadros),
+    pdf.set_text_color(254, 0, 0)                                        # y el color.
     pdf.cell(w=0, h=12, txt=f'{row['Order']}: {row["Topic"]}', align="C", ln=1)  # cremos la celda dónode se aloja la cabecera.
           # (w=ancho de la célula; h=altura; texto, alin=donde está el texto (izq, centro, der); ln=saltos de línea hasta la siguiente celda).
 
@@ -55,7 +55,7 @@ for index, row in df.iterrows():  # se pone iterrow para que recorra todas las f
         pdf.cell(w=0, h=10, txt=str(pdf.page_no()), align="R")
 
         # bucle for para crear la líneas que hay en las páginas que sirven como guía para escribir recto.
-        for y in range(33, 275, 12):
+        for y in range(20, 275, 12):
             pdf.line(10, y, 200, y)
             pdf.set_draw_color(204, 204, 204)
 
